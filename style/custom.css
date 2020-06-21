@@ -1,0 +1,45 @@
+.form {
+    text-align: center;
+}
+
+#gallery {
+    display: grid;
+    grid-template-columns:repeat(3, 1fr);
+    padding: 10px;
+}
+
+.post {
+ margin: 10px;
+}
+
+.post img {
+    height: 450px;
+}
+
+.post .card-content {
+    height: 300px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.post .card-action {
+    text-align: center;
+    height: 150px;
+}
+
+.post .card-action div {
+    margin-top: 1em;
+}
+.loading {
+    background-image: url("https://www.axislifescience.com/axisadmin/images/loading.gif");
+}
+
+@media only screen and (max-width: 600px) {
+    #gallery {
+        grid-template-columns:repeat(1, 1fr);
+    }
+
+    .post .card-content {
+        height: auto;
+    }
+}
