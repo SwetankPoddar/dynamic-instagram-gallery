@@ -11,9 +11,9 @@ $( "#username_form" ).submit(function( event ) {
     // If any username, fetch the posts
     if(username){
         fetch_posts(username);
-    
+    }
     // Otherwise display an error
-    } else {
+    else {
         alert("Please enter a username");
     }
     
@@ -38,6 +38,7 @@ function fetch_posts(username) {
             return;
         }
 
+        // Loop through every post and create appropriate gallery for them
         media.forEach((post) => {
             post = post.node;
             console.log(post);
@@ -55,26 +56,28 @@ function fetch_posts(username) {
             // Set the image
             $(item).find('.card-image').prepend(img);
     
-            // Set the caption
+            // Create a caption model only if it exists
             if(post.edge_media_to_caption.edges.length > 0){
                 let caption_content = "<p>" + post.edge_media_to_caption.edges[0].node.text + "</p>";
                 
                 $(item).find('.card-content').html(caption_content);
                 
                 var model = $(caption).clone();
-
+                
+                // Create a div with appropriate link
                 $(item).find('.card-action').append(
                     `<div class="col s6">
                     <a class="read-more modal-trigger waves-effect waves-light btn" href='#caption_${post.id}'> Open Caption </a>
                     </div>`
                 );
-
+                
+                // Update the caption details
                 $(model).prop('id', `caption_${post.id}`);
                 $(model).find(".modal-content").html(caption_content);
                 captions.append(model);
             }
 
-            // Add a link to instagram
+            // Add a direct link to instagram post
             $(item).find('.open-instagram').attr("href", `https://www.instagram.com/p/${post.shortcode}/`);
             
             // Append the post to gallery
@@ -88,9 +91,3 @@ function fetch_posts(username) {
         alert("Either an invalid username or a private account");
     });
 }
-
-
-
-$(document).ready(function(){
-    $('.materialboxed').materialbox();
-});
