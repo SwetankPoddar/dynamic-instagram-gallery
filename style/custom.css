@@ -31,7 +31,7 @@
     margin-top: 1em;
 }
 .loading {
-    background-image: url("https://www.axislifescience.com/axisadmin/images/loading.gif");
+    background-image: url("/assets/loading.gif");
 }
 
 @media only screen and (max-width: 600px) {
