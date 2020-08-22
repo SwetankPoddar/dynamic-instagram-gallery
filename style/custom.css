@@ -30,8 +30,13 @@
 .post .card-action div {
     margin-top: 1em;
 }
+
 .loading {
     background-image: url("/assets/loading.gif");
+}
+
+#submit_btn {
+    color: white;
 }
 
 @media only screen and (max-width: 600px) {
